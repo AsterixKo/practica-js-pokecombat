@@ -28,7 +28,7 @@ function readInputs() {
     // console.log('defenseFigtherRight:', defenseFigtherRight);
 }
 
-function readNames(){
+function readNames() {
     nameLeft = document.getElementById('id-figther-left').innerText;
     nameRight = document.getElementById('id-figther-right').innerText;
 }
@@ -41,13 +41,13 @@ function writePanelInfo(text) {
     const panelInfo = document.getElementById('id-panel-info-fight');
     var node = document.createElement('P');
     node.setAttribute('id', 'id-scrollable-' + positionScrollablePanelInfoId);
-    
+
     var textnode = document.createTextNode(text);
     node.appendChild(textnode);
     panelInfo.appendChild(node);
 
     //seteamos el scroll
-    var myElement = document.getElementById('id-scrollable-' +positionScrollablePanelInfoId);
+    var myElement = document.getElementById('id-scrollable-' + positionScrollablePanelInfoId);
     var topPos = myElement.scrollIntoView();
     positionScrollablePanelInfoId++;
 }
@@ -59,12 +59,12 @@ function figth() {
         if (defenseFigtherRight > 0) { //restamos a la defensa
             defenseFigtherRight = defenseFigtherRight - damageFigtherLeft;
             // Mostramos información en la pagina
-            writePanelInfo(`Defensa ${nameRight}: ${defenseFigtherRight}`);
+            writePanelInfo(`Defensa de ${nameRight}: ${defenseFigtherRight}`);
             console.log('defenseFigtherRight:', defenseFigtherRight);
         } else { //restamos a la vida
             lifeFigtherRight = lifeFigtherRight - damageFigtherLeft;
             // Mostramos información en la pagina
-            writePanelInfo(`Vida ${nameRight}: ${lifeFigtherRight}`);
+            writePanelInfo(`Vida de ${nameRight}: ${lifeFigtherRight}`);
             console.log('lifeFigtherRight:', lifeFigtherRight);
         }
 
@@ -74,18 +74,22 @@ function figth() {
         if (defenseFigtherLeft > 0) { //restamos a la defensa
             defenseFigtherLeft = defenseFigtherLeft - damageFigtherRight;
             // Mostramos información en la pagina
-            writePanelInfo(`Defensa ${nameLeft}: ${defenseFigtherLeft}`);
+            writePanelInfo(`Defensa de ${nameLeft}: ${defenseFigtherLeft}`);
             console.log('defenseFigtherLeft:', defenseFigtherLeft);
         } else { //restamos a la vida
             lifeFigtherLeft = lifeFigtherLeft - damageFigtherRight;
             // Mostramos información en la pagina
-            writePanelInfo(`Vida ${nameLeft}: ${lifeFigtherLeft}`);
+            writePanelInfo(`Vida de ${nameLeft}: ${lifeFigtherLeft}`);
             console.log('lifeFigtherLeft:', lifeFigtherLeft);
         }
     }
 }
 
 function actionButton() {
+    document.getElementById('id-panel-info-fight').innerHTML = '';//limpiamos panel de info
+    stopMoveFigtherLeft();
+    stopMoveFigtherRight();
+    moveFigthers();
     readInputs();
     readNames();
 
@@ -101,9 +105,11 @@ function actionButton() {
         if (lifeFigtherLeft <= 0 || lifeFigtherRight <= 0) {
             if (lifeFigtherLeft <= 0) {
                 writePanelInfo(`Gana ${nameRight}`);
+                stopMoveFigtherLeft();
             }
             if (lifeFigtherRight <= 0) {
                 writePanelInfo(`Gana ${nameLeft}`);
+                stopMoveFigtherRight();
             }
             clearInterval(theInterval);
         }
@@ -176,4 +182,22 @@ function selectBackground3() {
 
 function selectBackground4() {
     document.body.style.backgroundImage = "url('img/escenario4.svg')";
+}
+
+//MOVE FIGTHERS
+function moveFigthers(){
+    let figtherLeft = document.getElementById('id-img-fighter-left');
+    figtherLeft.classList.add('animate-image');
+    let figtherRight = document.getElementById('id-img-fighter-right');
+    figtherRight.classList.add('animate-image');
+}
+
+function stopMoveFigtherLeft(){
+    let figtherLeft = document.getElementById('id-img-fighter-left');
+    figtherLeft.classList.remove('animate-image');
+}
+
+function stopMoveFigtherRight(){
+    let figtherRight = document.getElementById('id-img-fighter-right');
+    figtherRight.classList.remove('animate-image');
 }
