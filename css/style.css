@@ -28,6 +28,16 @@ body {
     color: #ee7401;
 }
 
+.img-figther-left, .img-figther-right{
+    width: 200px;
+    height: 200px;
+}
+
+.pokemon-img{
+    border: 5px solid #555;
+    display: block;
+}
+
 /* FOOTER */
 .footer-select-stage-title {
     font-family: 'Chango', cursive;

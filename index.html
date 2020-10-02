@@ -16,26 +16,36 @@
                 <h2 class="header-select-pokemon-title">Selecciona pokemon para luchar</h2>
             </div>
             <div class="pokemons-container-left">
-                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-bullbasaur-96.png"/></div>
-                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-charmander-96.png"/></div>
-                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-dratini-96.png"/></div>
-                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-eevee-96.png"/></div>
+                <div class="pokemon-img-container"><img class="pokemon-img" onclick="javascript:selectFigther1();" src="img/pokemons/icons8-bullbasaur-96.png"/></div>
+                <div class="pokemon-img-container"><img class="pokemon-img" onclick="javascript:selectFigther2();" src="img/pokemons/icons8-charmander-96.png"/></div>
+                <div class="pokemon-img-container"><img class="pokemon-img" onclick="javascript:selectFigther3();" src="img/pokemons/icons8-dratini-96.png"/></div>
+                <div class="pokemon-img-container"><img class="pokemon-img" onclick="javascript:selectFigther4();" src="img/pokemons/icons8-eevee-96.png"/></div>
             </div>
             <div class="pokemons-container-right">
-                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-jigglypuff-96.png"/></div>
-                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-mankey-96.png"/></div>
-                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-meowth-96.png"/></div>
-                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-pikachu-pokemon-96.png"/></div>
+                <div class="pokemon-img-container"><img class="pokemon-img" onclick="javascript:selectFigther5();" src="img/pokemons/icons8-jigglypuff-96.png"/></div>
+                <div class="pokemon-img-container"><img class="pokemon-img" onclick="javascript:selectFigther6();" src="img/pokemons/icons8-mankey-96.png"/></div>
+                <div class="pokemon-img-container"><img class="pokemon-img" onclick="javascript:selectFigther7();" src="img/pokemons/icons8-meowth-96.png"/></div>
+                <div class="pokemon-img-container"><img class="pokemon-img" onclick="javascript:selectFigther8();" src="img/pokemons/icons8-pikachu-pokemon-96.png"/></div>
             </div>
         </header>
         <main class="main-figth">
-
+            <section id="id-panel-info-left" class="panel-info-left">
+                <p>panel con info del pokemon left</p>
+            </section>
+            <section id="id-panel-fighter-left"><img id="id-img-fighter-left" class="img-figther-left" src="img/pokemons/icons8-bullbasaur-96.png"/></section>
+            <section id="id-panel-info-fight" class="panel-info-figth">
+                <p>panel con info de lal lucha</p>
+            </section>
+            <section id="id-panel-fighter-right"><img id="id-img-fighter-right" class="img-figther-right" src="img/pokemons/icons8-jigglypuff-96.png"/></section>
+            <section id="id-panel-info-right" class="panel-info-right">
+                <p>panel con info del pokemon right</p>
+            </section>
         </main>
         <footer class="footer-container">
             <div>
                 <h2 class="footer-select-stage-title">Selecciona escenario</h2>
             </div>
-            <div id="footer-img-1" class="footer-img-container" onclick="javascript:selectBackground1();"><img
+            <div id="footer-img-1" class="footer-img-container"onclick="javascript:selectBackground1();"><img
                     class="footer-img" src="img/escenario1.jpg" /></div>
             <div id="footer-img-2" class="footer-img-container" onclick="javascript:selectBackground2();"><img
                     class="footer-img" src="img/escenario2.png" /></div>
