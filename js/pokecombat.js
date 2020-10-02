@@ -5,6 +5,9 @@ let lifeFigtherRight;
 let damageFigtherRight;
 let defenseFigtherRight;
 let whoAttack = 0;
+let nameLeft;
+let nameRight;
+let positionScrollablePanelInfoId = 0;
 
 // OBTENEMOS LOS VALORES DE LOS INPUTS
 function readInputs() {
@@ -25,6 +28,11 @@ function readInputs() {
     // console.log('defenseFigtherRight:', defenseFigtherRight);
 }
 
+function readNames(){
+    nameLeft = document.getElementById('id-figther-left').innerText;
+    nameRight = document.getElementById('id-figther-right').innerText;
+}
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -32,9 +40,16 @@ function getRandomInt(min, max) {
 function writePanelInfo(text) {
     const panelInfo = document.getElementById('id-panel-info-fight');
     var node = document.createElement('P');
+    node.setAttribute('id', 'id-scrollable-' + positionScrollablePanelInfoId);
+    
     var textnode = document.createTextNode(text);
     node.appendChild(textnode);
     panelInfo.appendChild(node);
+
+    //seteamos el scroll
+    var myElement = document.getElementById('id-scrollable-' +positionScrollablePanelInfoId);
+    var topPos = myElement.scrollIntoView();
+    positionScrollablePanelInfoId++;
 }
 
 function figth() {
@@ -44,12 +59,12 @@ function figth() {
         if (defenseFigtherRight > 0) { //restamos a la defensa
             defenseFigtherRight = defenseFigtherRight - damageFigtherLeft;
             // Mostramos información en la pagina
-            writePanelInfo(`Defensa right: ${defenseFigtherRight}`);
+            writePanelInfo(`Defensa ${nameRight}: ${defenseFigtherRight}`);
             console.log('defenseFigtherRight:', defenseFigtherRight);
         } else { //restamos a la vida
             lifeFigtherRight = lifeFigtherRight - damageFigtherLeft;
             // Mostramos información en la pagina
-            writePanelInfo(`Vida right: ${lifeFigtherRight}`);
+            writePanelInfo(`Vida ${nameRight}: ${lifeFigtherRight}`);
             console.log('lifeFigtherRight:', lifeFigtherRight);
         }
 
@@ -59,12 +74,12 @@ function figth() {
         if (defenseFigtherLeft > 0) { //restamos a la defensa
             defenseFigtherLeft = defenseFigtherLeft - damageFigtherRight;
             // Mostramos información en la pagina
-            writePanelInfo(`Defensa left: ${defenseFigtherLeft}`);
+            writePanelInfo(`Defensa ${nameLeft}: ${defenseFigtherLeft}`);
             console.log('defenseFigtherLeft:', defenseFigtherLeft);
         } else { //restamos a la vida
             lifeFigtherLeft = lifeFigtherLeft - damageFigtherRight;
             // Mostramos información en la pagina
-            writePanelInfo(`Vida left: ${lifeFigtherLeft}`);
+            writePanelInfo(`Vida ${nameLeft}: ${lifeFigtherLeft}`);
             console.log('lifeFigtherLeft:', lifeFigtherLeft);
         }
     }
@@ -72,6 +87,7 @@ function figth() {
 
 function actionButton() {
     readInputs();
+    readNames();
 
     whoAttack = getRandomInt(1, 3);
     console.log('starts player:', whoAttack);
@@ -84,10 +100,10 @@ function actionButton() {
         figth();
         if (lifeFigtherLeft <= 0 || lifeFigtherRight <= 0) {
             if (lifeFigtherLeft <= 0) {
-                writePanelInfo('Gana right');
+                writePanelInfo(`Gana ${nameRight}`);
             }
             if (lifeFigtherRight <= 0) {
-                writePanelInfo('Gana left');
+                writePanelInfo(`Gana ${nameLeft}`);
             }
             clearInterval(theInterval);
         }

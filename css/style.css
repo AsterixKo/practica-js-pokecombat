@@ -60,6 +60,7 @@ body {
 
 .panel-info-figth {
     grid-area: panel-main;
+    overflow: auto;
 }
 
 .panel-fighter-right {
