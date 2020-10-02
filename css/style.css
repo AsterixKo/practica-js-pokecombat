@@ -54,6 +54,8 @@ body {
     grid-area: panel-figther-left;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .panel-info-figth {
@@ -64,6 +66,8 @@ body {
     grid-area: panel-figther-right;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .panel-info-right {
@@ -177,6 +181,13 @@ body {
     font-size: 20px;
     font-weight: bold;
     color: white;
+    font-family: 'Sansita Swashed', cursive;
+}
+
+.figther-name{
+    font-size: 40px;
+    font-weight: bold;
+    color: #ee9b01;
     font-family: 'Sansita Swashed', cursive;
 }
 
