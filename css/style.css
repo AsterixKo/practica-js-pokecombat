@@ -122,6 +122,10 @@ body {
     color: white;
 }
 
+.panel-side-inputs{
+    width: 100%;
+}
+
 /* HEADER */
 .header-select-pokemon-title {
     font-family: 'Chango', cursive;
@@ -180,7 +184,6 @@ body {
 .button-combat-style{
     font-family: 'Chango', cursive;
     font-size: 50px;
-    /* color: #ee7401; */
     box-shadow:inset 0px 1px 0px 0px #f5978e;
 	background:linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
 	background-color:#f24537;
@@ -190,7 +193,6 @@ body {
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	/* font-size:15px; */
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
