@@ -1,13 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokecombat</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chango&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    
+    <div class="main-container">
+        <header class="header-container">
+            <div>
+                <h2 class="header-select-pokemon-title">Selecciona pokemon para luchar</h2>
+            </div>
+            <div class="pokemons-container-left">
+                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-bullbasaur-96.png"/></div>
+                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-charmander-96.png"/></div>
+                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-dratini-96.png"/></div>
+                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-eevee-96.png"/></div>
+            </div>
+            <div class="pokemons-container-right">
+                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-jigglypuff-96.png"/></div>
+                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-mankey-96.png"/></div>
+                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-meowth-96.png"/></div>
+                <div class="pokemon-img-container"><img class="pokemon-img" src="img/pokemons/icons8-pikachu-pokemon-96.png"/></div>
+            </div>
+        </header>
+        <main class="main-figth">
+
+        </main>
+        <footer class="footer-container">
+            <div>
+                <h2 class="footer-select-stage-title">Selecciona escenario</h2>
+            </div>
+            <div id="footer-img-1" class="footer-img-container" onclick="javascript:selectBackground1();"><img
+                    class="footer-img" src="img/escenario1.jpg" /></div>
+            <div id="footer-img-2" class="footer-img-container" onclick="javascript:selectBackground2();"><img
+                    class="footer-img" src="img/escenario2.png" /></div>
+            <div id="footer-img-3" class="footer-img-container" onclick="javascript:selectBackground3();"><img
+                    class="footer-img" src="img/escenario3.webp" /></div>
+            <div id="footer-img-4" class="footer-img-container" onclick="javascript:selectBackground4();"><img
+                    class="footer-img" src="img/escenario4.svg" /></div>
+        </footer>
+    </div>
     <script src="js/pokecombat.js"></script>
 </body>
+
 </html>

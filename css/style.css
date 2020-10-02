@@ -3,3 +3,48 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+
+body {
+    background-image: url(../img/escenario1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* HEADER */
+.header-select-pokemon-title{
+    font-family: 'Chango', cursive;
+    font-size: 50px;
+    color: #ee7401;
+}
+
+/* FOOTER */
+.footer-select-stage-title {
+    font-family: 'Chango', cursive;
+    font-size: 50px;
+    color: #ee7401;
+}
+
+.footer-img-container {
+    width: 150px;
+    /* height: 75px; */
+    /* border-style: solid; */
+    border-radius: 10px 10px 0px 0px;
+    box-shadow: rgb(255, 255, 255) 0px 8px 0px 0px, rgba(0, 0, 0, 0.3) 0px 0px 8px;
+}
+
+.footer-img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
