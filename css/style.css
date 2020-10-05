@@ -16,8 +16,8 @@ body {
 /* GRID */
 .main-container {
     display: grid;
-    grid-template-columns: 16% 16% 16% 16% 16% 16%;
-    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; */
+    /* grid-template-columns: 16% 16% 16% 16% 16% 16%; */
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 100px 150px 100px 400px 100px 150px;
     /* grid-template-rows: auto; */
     grid-template-areas: "header header header header header header"
