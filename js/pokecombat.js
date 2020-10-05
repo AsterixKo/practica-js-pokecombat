@@ -1,9 +1,9 @@
-let lifeFigtherLeft;
-let damageFigtherLeft;
-let defenseFigtherLeft;
-let lifeFigtherRight;
-let damageFigtherRight;
-let defenseFigtherRight;
+let lifeFighterLeft;
+let damageFighterLeft;
+let defenseFighterLeft;
+let lifeFighterRight;
+let damageFighterRight;
+let defenseFighterRight;
 let whoAttack = 0;
 let nameLeft;
 let nameRight;
@@ -14,26 +14,26 @@ loadLastValuesFromLocalStorage();
 
 // OBTENEMOS LOS VALORES DE LOS INPUTS
 function readInputs() {
-    lifeFigtherLeft = document.getElementById('id-life-figther-left').value;
-    damageFigtherLeft = document.getElementById('id-damage-figther-left').value;
-    defenseFigtherLeft = document.getElementById('id-defense-figther-left').value;
+    lifeFighterLeft = document.getElementById('id-life-fighter-left').value;
+    damageFighterLeft = document.getElementById('id-damage-fighter-left').value;
+    defenseFighterLeft = document.getElementById('id-defense-fighter-left').value;
 
-    lifeFigtherRight = document.getElementById('id-life-figther-right').value;
-    damageFigtherRight = document.getElementById('id-damage-figther-right').value;
-    defenseFigtherRight = document.getElementById('id-defense-figther-right').value;
+    lifeFighterRight = document.getElementById('id-life-fighter-right').value;
+    damageFighterRight = document.getElementById('id-damage-fighter-right').value;
+    defenseFighterRight = document.getElementById('id-defense-fighter-right').value;
     // console.log('-------LEFT------');
-    // console.log('lifeFigtherLeft:', lifeFigtherLeft);
-    // console.log('damageFigtherLeft:', damageFigtherLeft);
-    // console.log('defenseFigtherLeft:', defenseFigtherLeft);
+    // console.log('lifeFighterLeft:', lifeFighterLeft);
+    // console.log('damageFighterLeft:', damageFighterLeft);
+    // console.log('defenseFighterLeft:', defenseFighterLeft);
     // console.log('-------RIGHT------');
-    // console.log('lifeFigtherRight:', lifeFigtherRight);
-    // console.log('damageFigtherRight:', damageFigtherRight);
-    // console.log('defenseFigtherRight:', defenseFigtherRight);
+    // console.log('lifeFighterRight:', lifeFighterRight);
+    // console.log('damageFighterRight:', damageFighterRight);
+    // console.log('defenseFighterRight:', defenseFighterRight);
 }
 
 function readNames() {
-    nameLeft = document.getElementById('id-figther-left').innerText;
-    nameRight = document.getElementById('id-figther-right').innerText;
+    nameLeft = document.getElementById('id-fighter-left').innerText;
+    nameRight = document.getElementById('id-fighter-right').innerText;
 }
 
 function getRandomInt(min, max) {
@@ -59,61 +59,61 @@ function figth() {
     if (whoAttack === 1) { //ataca jugador izquierdo
         whoAttack = 2;
 
-        if (defenseFigtherRight > 0) { //restamos a la defensa
-            defenseFigtherRight = defenseFigtherRight - damageFigtherLeft;
+        if (defenseFighterRight > 0) { //restamos a la defensa
+            defenseFighterRight = defenseFighterRight - damageFighterLeft;
             // Mostramos información en la pagina
-            writePanelInfo(`Defensa de ${nameRight}: ${defenseFigtherRight}`);
-            console.log('defenseFigtherRight:', defenseFigtherRight);
+            writePanelInfo(`Defensa de ${nameRight}: ${defenseFighterRight}`);
+            console.log('defenseFighterRight:', defenseFighterRight);
         } else { //restamos a la vida
-            lifeFigtherRight = lifeFigtherRight - damageFigtherLeft;
+            lifeFighterRight = lifeFighterRight - damageFighterLeft;
             // Mostramos información en la pagina
-            writePanelInfo(`Vida de ${nameRight}: ${lifeFigtherRight}`);
-            console.log('lifeFigtherRight:', lifeFigtherRight);
+            writePanelInfo(`Vida de ${nameRight}: ${lifeFighterRight}`);
+            console.log('lifeFighterRight:', lifeFighterRight);
         }
 
     } else if (whoAttack === 2) { //ataca jugador derecho
         whoAttack = 1;
 
-        if (defenseFigtherLeft > 0) { //restamos a la defensa
-            defenseFigtherLeft = defenseFigtherLeft - damageFigtherRight;
+        if (defenseFighterLeft > 0) { //restamos a la defensa
+            defenseFighterLeft = defenseFighterLeft - damageFighterRight;
             // Mostramos información en la pagina
-            writePanelInfo(`Defensa de ${nameLeft}: ${defenseFigtherLeft}`);
-            console.log('defenseFigtherLeft:', defenseFigtherLeft);
+            writePanelInfo(`Defensa de ${nameLeft}: ${defenseFighterLeft}`);
+            console.log('defenseFighterLeft:', defenseFighterLeft);
         } else { //restamos a la vida
-            lifeFigtherLeft = lifeFigtherLeft - damageFigtherRight;
+            lifeFighterLeft = lifeFighterLeft - damageFighterRight;
             // Mostramos información en la pagina
-            writePanelInfo(`Vida de ${nameLeft}: ${lifeFigtherLeft}`);
-            console.log('lifeFigtherLeft:', lifeFigtherLeft);
+            writePanelInfo(`Vida de ${nameLeft}: ${lifeFighterLeft}`);
+            console.log('lifeFighterLeft:', lifeFighterLeft);
         }
     }
 }
 
 function actionButton() {
     document.getElementById('id-panel-info-fight').innerHTML = ''; //limpiamos panel de info
-    stopMoveFigtherLeft();
-    stopMoveFigtherRight();
-    moveFigthers();
+    stopMoveFighterLeft();
+    stopMoveFighterRight();
+    moveFighters();
     readInputs();
     saveLastInputValues();
     readNames();
 
     whoAttack = getRandomInt(1, 3);
     console.log('starts player:', whoAttack);
-    // while (lifeFigtherLeft > 0 || lifeFigtherRight > 0) {
+    // while (lifeFighterLeft > 0 || lifeFighterRight > 0) {
     //     console.log('dentro del bucle');
     //     setTimeout(figth, 500);
 
     // }
     var theInterval = setInterval(function () {
         figth();
-        if (lifeFigtherLeft <= 0 || lifeFigtherRight <= 0) {
-            if (lifeFigtherLeft <= 0) {
+        if (lifeFighterLeft <= 0 || lifeFighterRight <= 0) {
+            if (lifeFighterLeft <= 0) {
                 writePanelInfo(`Gana ${nameRight}`);
-                stopMoveFigtherLeft();
+                stopMoveFighterLeft();
             }
-            if (lifeFigtherRight <= 0) {
+            if (lifeFighterRight <= 0) {
                 writePanelInfo(`Gana ${nameLeft}`);
-                stopMoveFigtherRight();
+                stopMoveFighterRight();
             }
             clearInterval(theInterval);
         }
@@ -122,75 +122,75 @@ function actionButton() {
 
 
 // SELECT FIGTHER
-function selectFigther1() {
+function selectFighter1() {
     const srcFighter1 = 'img/pokemons/icons8-bullbasaur-96.png';
     const nameFighter1 = 'Bullbasaur';
     const element = document.getElementById('id-img-fighter-left');
     element.src = srcFighter1;
-    document.getElementById('id-figther-left').innerText = nameFighter1;
+    document.getElementById('id-fighter-left').innerText = nameFighter1;
     saveFighterLeftInLocalStorate(srcFighter1, nameFighter1);
 }
 
-function selectFigther2() {
+function selectFighter2() {
     const srcFighter2 = 'img/pokemons/icons8-charmander-96.png';
     const nameFighter2 = 'Charmande';
     const element = document.getElementById('id-img-fighter-left');
     element.src = srcFighter2;
-    document.getElementById('id-figther-left').innerText = nameFighter2;
+    document.getElementById('id-fighter-left').innerText = nameFighter2;
     saveFighterLeftInLocalStorate(srcFighter2, nameFighter2);
 }
 
-function selectFigther3() {
+function selectFighter3() {
     const srcFighter3 = 'img/pokemons/icons8-dratini-96.png';
     const nameFighter3 = 'Dratini';
     const element = document.getElementById('id-img-fighter-left');
     element.src = srcFighter3;
-    document.getElementById('id-figther-left').innerText = nameFighter3;
+    document.getElementById('id-fighter-left').innerText = nameFighter3;
     saveFighterLeftInLocalStorate(srcFighter3, nameFighter3);
 }
 
-function selectFigther4() {
+function selectFighter4() {
     const srcFighter4 = 'img/pokemons/icons8-eevee-96.png';
     const nameFighter4 = 'Eevee';
     const element = document.getElementById('id-img-fighter-left');
     element.src = srcFighter4;
-    document.getElementById('id-figther-left').innerText = nameFighter4;
+    document.getElementById('id-fighter-left').innerText = nameFighter4;
     saveFighterLeftInLocalStorate(srcFighter4, nameFighter4);
 }
 
-function selectFigther5() {
+function selectFighter5() {
     const srcFighter5 = 'img/pokemons/icons8-jigglypuff-96.png';
     const nameFighter5 = 'Jigglypuff';
     const element = document.getElementById('id-img-fighter-right');
     element.src = srcFighter5;
-    document.getElementById('id-figther-right').innerText = nameFighter5;
+    document.getElementById('id-fighter-right').innerText = nameFighter5;
     saveFighterRightInLocalStorate(srcFighter5, nameFighter5);
 }
 
-function selectFigther6() {
+function selectFighter6() {
     const srcFighter6 = 'img/pokemons/icons8-mankey-96.png';
     const nameFighter6 = 'Mankey';
     const element = document.getElementById('id-img-fighter-right');
     element.src = srcFighter6;
-    document.getElementById('id-figther-right').innerText = nameFighter6;
+    document.getElementById('id-fighter-right').innerText = nameFighter6;
     saveFighterRightInLocalStorate(srcFighter6, nameFighter6);
 }
 
-function selectFigther7() {
+function selectFighter7() {
     const srcFighter7 = 'img/pokemons/icons8-meowth-96.png';
     const nameFighter7 = 'Meowth';
     const element = document.getElementById('id-img-fighter-right');
     element.src = srcFighter7;
-    document.getElementById('id-figther-right').innerText = nameFighter7;
+    document.getElementById('id-fighter-right').innerText = nameFighter7;
     saveFighterRightInLocalStorate(srcFighter7, nameFighter7);
 }
 
-function selectFigther8() {
+function selectFighter8() {
     const srcFighter8 = 'img/pokemons/icons8-pikachu-pokemon-96.png';
     const nameFighter8 = 'Pikachu';
     const element = document.getElementById('id-img-fighter-right');
     element.src = srcFighter8;
-    document.getElementById('id-figther-right').innerText = nameFighter8;
+    document.getElementById('id-fighter-right').innerText = nameFighter8;
     saveFighterRightInLocalStorate(srcFighter8, nameFighter8);
 }
 
@@ -220,21 +220,21 @@ function selectBackground4() {
 }
 
 //MOVE FIGTHERS
-function moveFigthers() {
-    let figtherLeft = document.getElementById('id-img-fighter-left');
-    figtherLeft.classList.add('animate-image');
-    let figtherRight = document.getElementById('id-img-fighter-right');
-    figtherRight.classList.add('animate-image');
+function moveFighters() {
+    let fighterLeft = document.getElementById('id-img-fighter-left');
+    fighterLeft.classList.add('animate-image');
+    let fighterRight = document.getElementById('id-img-fighter-right');
+    fighterRight.classList.add('animate-image');
 }
 
-function stopMoveFigtherLeft() {
-    let figtherLeft = document.getElementById('id-img-fighter-left');
-    figtherLeft.classList.remove('animate-image');
+function stopMoveFighterLeft() {
+    let fighterLeft = document.getElementById('id-img-fighter-left');
+    fighterLeft.classList.remove('animate-image');
 }
 
-function stopMoveFigtherRight() {
-    let figtherRight = document.getElementById('id-img-fighter-right');
-    figtherRight.classList.remove('animate-image');
+function stopMoveFighterRight() {
+    let fighterRight = document.getElementById('id-img-fighter-right');
+    fighterRight.classList.remove('animate-image');
 }
 
 /**
@@ -267,21 +267,21 @@ function loadLastBackground() {
 function loadLastInputValues() {
     console.log('loading last input values...');
 
-    lifeFigtherLeft = localStorage.getItem('life-figther-left') === null ? 101 : localStorage.getItem('life-figther-left');
-    damageFigtherLeft = localStorage.getItem('damage-figther-left') === null ? 11 : localStorage.getItem('damage-figther-left');
-    defenseFigtherLeft = localStorage.getItem('defense-figther-left') === null ? 101 : localStorage.getItem('defense-figther-left');
+    lifeFighterLeft = localStorage.getItem('life-fighter-left') === null ? 101 : localStorage.getItem('life-fighter-left');
+    damageFighterLeft = localStorage.getItem('damage-fighter-left') === null ? 11 : localStorage.getItem('damage-fighter-left');
+    defenseFighterLeft = localStorage.getItem('defense-fighter-left') === null ? 101 : localStorage.getItem('defense-fighter-left');
 
-    lifeFigtherRight = localStorage.getItem('life-figther-right') === null ? 101 : localStorage.getItem('life-figther-right');
-    damageFigtherRight = localStorage.getItem('damage-figther-right') === null ? 11 : localStorage.getItem('damage-figther-right');
-    defenseFigtherRight = localStorage.getItem('defense-figther-right') === null ? 101 : localStorage.getItem('defense-figther-right');
+    lifeFighterRight = localStorage.getItem('life-fighter-right') === null ? 101 : localStorage.getItem('life-fighter-right');
+    damageFighterRight = localStorage.getItem('damage-fighter-right') === null ? 11 : localStorage.getItem('damage-fighter-right');
+    defenseFighterRight = localStorage.getItem('defense-fighter-right') === null ? 101 : localStorage.getItem('defense-fighter-right');
 
-    document.getElementById('id-life-figther-left').value = lifeFigtherLeft;
-    document.getElementById('id-damage-figther-left').value = damageFigtherLeft;
-    document.getElementById('id-defense-figther-left').value = defenseFigtherLeft;
+    document.getElementById('id-life-fighter-left').value = lifeFighterLeft;
+    document.getElementById('id-damage-fighter-left').value = damageFighterLeft;
+    document.getElementById('id-defense-fighter-left').value = defenseFighterLeft;
 
-    document.getElementById('id-life-figther-right').value = lifeFigtherRight;
-    document.getElementById('id-damage-figther-right').value = damageFigtherRight;
-    document.getElementById('id-defense-figther-right').value = defenseFigtherRight;
+    document.getElementById('id-life-fighter-right').value = lifeFighterRight;
+    document.getElementById('id-damage-fighter-right').value = damageFighterRight;
+    document.getElementById('id-defense-fighter-right').value = defenseFighterRight;
 }
 
 /**
@@ -304,23 +304,23 @@ function loadLastSelectedPokemons() {
         console.log('srcFighterLeft || nameFighterLeft is null');
         const element = document.getElementById('id-img-fighter-left');
         element.src = srcFighter1;
-        document.getElementById('id-figther-left').innerText = nameFighter1;
+        document.getElementById('id-fighter-left').innerText = nameFighter1;
     } else {
         console.log('srcFighterLeft || nameFighterLeft is not null');
         const element = document.getElementById('id-img-fighter-left');
         element.src = srcFighterLeft;
-        document.getElementById('id-figther-left').innerText = nameFighterLeft;
+        document.getElementById('id-fighter-left').innerText = nameFighterLeft;
     }
     if (srcFighterRight === null || nameFighterRight === null) { //default values
         console.log('srcFighterRight || nameFighterRight is null');
         const element = document.getElementById('id-img-fighter-right');
         element.src = srcFighter5;
-        document.getElementById('id-figther-right').innerText = nameFighter5;
+        document.getElementById('id-fighter-right').innerText = nameFighter5;
     } else {
         console.log('srcFighterRight || nameFighterRight is not null');
         const element = document.getElementById('id-img-fighter-right');
         element.src = srcFighterRight;
-        document.getElementById('id-figther-right').innerText = nameFighterRight;
+        document.getElementById('id-fighter-right').innerText = nameFighterRight;
     }
 
 }
@@ -357,17 +357,17 @@ function saveFighterRightInLocalStorate(src, name) {
  * Save last input values of the pannels.
  */
 function saveLastInputValues() {
-    const saveLifeFigtherLeft = document.getElementById('id-life-figther-left').value;
-    const saveDamageFigtherLeft = document.getElementById('id-damage-figther-left').value;
-    const saveDefenseFigtherLeft = document.getElementById('id-defense-figther-left').value;
-    localStorage.setItem('life-figther-left', saveLifeFigtherLeft);
-    localStorage.setItem('damage-figther-left', saveDamageFigtherLeft);
-    localStorage.setItem('defense-figther-left', saveDefenseFigtherLeft);
+    const saveLifeFighterLeft = document.getElementById('id-life-fighter-left').value;
+    const saveDamageFighterLeft = document.getElementById('id-damage-fighter-left').value;
+    const saveDefenseFighterLeft = document.getElementById('id-defense-fighter-left').value;
+    localStorage.setItem('life-fighter-left', saveLifeFighterLeft);
+    localStorage.setItem('damage-fighter-left', saveDamageFighterLeft);
+    localStorage.setItem('defense-fighter-left', saveDefenseFighterLeft);
 
-    const saveLifeFigtherRight = document.getElementById('id-life-figther-right').value;
-    const saveDamageFigtherRight = document.getElementById('id-damage-figther-right').value;
-    const saveDefenseFigtherRight = document.getElementById('id-defense-figther-right').value;
-    localStorage.setItem('life-figther-right', saveLifeFigtherRight);
-    localStorage.setItem('damage-figther-right', saveDamageFigtherRight);
-    localStorage.setItem('defense-figther-right', saveDefenseFigtherRight);
+    const saveLifeFighterRight = document.getElementById('id-life-fighter-right').value;
+    const saveDamageFighterRight = document.getElementById('id-damage-fighter-right').value;
+    const saveDefenseFighterRight = document.getElementById('id-defense-fighter-right').value;
+    localStorage.setItem('life-fighter-right', saveLifeFighterRight);
+    localStorage.setItem('damage-fighter-right', saveDamageFighterRight);
+    localStorage.setItem('defense-fighter-right', saveDefenseFighterRight);
 }

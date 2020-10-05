@@ -21,9 +21,9 @@ body {
     grid-template-rows: 100px 150px 100px 400px 100px 150px;
     /* grid-template-rows: auto; */
     grid-template-areas: "header header header header header header"
-        "header-figthers-left header-figthers-left header-figthers-left header-figthers-right header-figthers-right header-figthers-right"
+        "header-fighters-left header-fighters-left header-fighters-left header-fighters-right header-fighters-right header-fighters-right"
         "actions actions actions actions actions actions"
-        "panel-settings-left panel-figther-left panel-main panel-main panel-figther-right panel-settings-right"
+        "panel-settings-left panel-fighter-left panel-main panel-main panel-fighter-right panel-settings-right"
         "footer-top-text footer-top-text footer-top-text footer-top-text footer-top-text footer-top-text"
         "footer-select-background footer-select-background footer-select-background footer-select-background footer-select-background footer-select-background";
 }
@@ -35,13 +35,13 @@ body {
 }
 
 .pokemons-container-left {
-    grid-area: header-figthers-left;
+    grid-area: header-fighters-left;
     display: flex;
     justify-content: center;
 }
 
 .pokemons-container-right {
-    grid-area: header-figthers-right;
+    grid-area: header-fighters-right;
     display: flex;
     justify-content: center;
 }
@@ -51,7 +51,7 @@ body {
 }
 
 .panel-fighter-left {
-    grid-area: panel-figther-left;
+    grid-area: panel-fighter-left;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,7 +64,7 @@ body {
 }
 
 .panel-fighter-right {
-    grid-area: panel-figther-right;
+    grid-area: panel-fighter-right;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,8 +138,8 @@ body {
     color: #ee7401;
 }
 
-.img-figther-left,
-.img-figther-right {
+.img-fighter-left,
+.img-fighter-right {
     width: 200px;
     height: 200px;
     /* position:absolute; */
@@ -186,7 +186,7 @@ body {
     font-family: 'Sansita Swashed', cursive;
 }
 
-.figther-name{
+.fighter-name{
     font-size: 40px;
     font-weight: bold;
     color: #ee9b01;
