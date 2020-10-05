@@ -89,11 +89,12 @@ function figth() {
 }
 
 function actionButton() {
-    document.getElementById('id-panel-info-fight').innerHTML = '';//limpiamos panel de info
+    document.getElementById('id-panel-info-fight').innerHTML = ''; //limpiamos panel de info
     stopMoveFigtherLeft();
     stopMoveFigtherRight();
     moveFigthers();
     readInputs();
+    saveLastInputValues();
     readNames();
 
     whoAttack = getRandomInt(1, 3);
@@ -219,19 +220,19 @@ function selectBackground4() {
 }
 
 //MOVE FIGTHERS
-function moveFigthers(){
+function moveFigthers() {
     let figtherLeft = document.getElementById('id-img-fighter-left');
     figtherLeft.classList.add('animate-image');
     let figtherRight = document.getElementById('id-img-fighter-right');
     figtherRight.classList.add('animate-image');
 }
 
-function stopMoveFigtherLeft(){
+function stopMoveFigtherLeft() {
     let figtherLeft = document.getElementById('id-img-fighter-left');
     figtherLeft.classList.remove('animate-image');
 }
 
-function stopMoveFigtherRight(){
+function stopMoveFigtherRight() {
     let figtherRight = document.getElementById('id-img-fighter-right');
     figtherRight.classList.remove('animate-image');
 }
@@ -239,7 +240,7 @@ function stopMoveFigtherRight(){
 /**
  * Load last values from localStorage.
  */
-function loadLastValuesFromLocalStorage(){
+function loadLastValuesFromLocalStorage() {
     loadLastInputValues();
     loadLastSelectedPokemons();
     loadLastBackground();
@@ -248,12 +249,12 @@ function loadLastValuesFromLocalStorage(){
 /**
  * Load last background from localStorage.
  */
-function loadLastBackground(){
+function loadLastBackground() {
     console.log('loading last background...');
     const urlBackground1 = "url('img/escenario1.jpg')";
     let urlBackground = localStorage.getItem('combat-background');
     console.log(urlBackground);
-    if(urlBackground === null){
+    if (urlBackground === null) {
         console.log('combat-background is null');
         urlBackground = urlBackground1;
     }
@@ -263,14 +264,30 @@ function loadLastBackground(){
 /**
  * Load last input values from the pannels from localStorage.
  */
-function loadLastInputValues(){
+function loadLastInputValues() {
     console.log('loading last input values...');
+
+    lifeFigtherLeft = localStorage.getItem('life-figther-left') === null ? 101 : localStorage.getItem('life-figther-left');
+    damageFigtherLeft = localStorage.getItem('damage-figther-left') === null ? 11 : localStorage.getItem('damage-figther-left');
+    defenseFigtherLeft = localStorage.getItem('defense-figther-left') === null ? 101 : localStorage.getItem('defense-figther-left');
+
+    lifeFigtherRight = localStorage.getItem('life-figther-right') === null ? 101 : localStorage.getItem('life-figther-right');
+    damageFigtherRight = localStorage.getItem('damage-figther-right') === null ? 11 : localStorage.getItem('damage-figther-right');
+    defenseFigtherRight = localStorage.getItem('defense-figther-right') === null ? 101 : localStorage.getItem('defense-figther-right');
+
+    document.getElementById('id-life-figther-left').value = lifeFigtherLeft;
+    document.getElementById('id-damage-figther-left').value = damageFigtherLeft;
+    document.getElementById('id-defense-figther-left').value = defenseFigtherLeft;
+
+    document.getElementById('id-life-figther-right').value = lifeFigtherRight;
+    document.getElementById('id-damage-figther-right').value = damageFigtherRight;
+    document.getElementById('id-defense-figther-right').value = defenseFigtherRight;
 }
 
 /**
  * Load last selected pokemons from localStorage
  */
-function loadLastSelectedPokemons(){
+function loadLastSelectedPokemons() {
     console.log('loading last selected pokemons');
     //default values;
     const srcFighter1 = 'img/pokemons/icons8-bullbasaur-96.png';
@@ -283,23 +300,23 @@ function loadLastSelectedPokemons(){
     const nameFighterLeft = localStorage.getItem('fighter-left-name');
     const srcFighterRight = localStorage.getItem('fighter-right-src');
     const nameFighterRight = localStorage.getItem('fighter-right-name');
-    if(srcFighterLeft === null || nameFighterLeft === null){//default values
+    if (srcFighterLeft === null || nameFighterLeft === null) { //default values
         console.log('srcFighterLeft || nameFighterLeft is null');
         const element = document.getElementById('id-img-fighter-left');
         element.src = srcFighter1;
         document.getElementById('id-figther-left').innerText = nameFighter1;
-    }else{
+    } else {
         console.log('srcFighterLeft || nameFighterLeft is not null');
         const element = document.getElementById('id-img-fighter-left');
         element.src = srcFighterLeft;
         document.getElementById('id-figther-left').innerText = nameFighterLeft;
     }
-    if(srcFighterRight === null || nameFighterRight === null){//default values
+    if (srcFighterRight === null || nameFighterRight === null) { //default values
         console.log('srcFighterRight || nameFighterRight is null');
         const element = document.getElementById('id-img-fighter-right');
         element.src = srcFighter5;
         document.getElementById('id-figther-right').innerText = nameFighter5;
-    }else{
+    } else {
         console.log('srcFighterRight || nameFighterRight is not null');
         const element = document.getElementById('id-img-fighter-right');
         element.src = srcFighterRight;
@@ -312,7 +329,7 @@ function loadLastSelectedPokemons(){
  * Save background in to local storage with key combat-background.
  * @param {*} url example "url('img/escenario1.jpg')"
  */
-function saveBackgroundInLocalStorate(url){
+function saveBackgroundInLocalStorate(url) {
     localStorage.setItem('combat-background', url);
 }
 
@@ -321,7 +338,7 @@ function saveBackgroundInLocalStorate(url){
  * @param {*} src resouce of the image example 'img/pokemons/icons8-bullbasaur-96.png'
  * @param {*} name Name of the pokemon example 'Bullbasaur'
  */
-function saveFighterLeftInLocalStorate(src, name){
+function saveFighterLeftInLocalStorate(src, name) {
     localStorage.setItem('fighter-left-src', src);
     localStorage.setItem('fighter-left-name', name);
 }
@@ -331,7 +348,26 @@ function saveFighterLeftInLocalStorate(src, name){
  * @param {*} src resouce of the image example 'img/pokemons/icons8-bullbasaur-96.png'
  * @param {*} name Name of the pokemon example 'Bullbasaur'
  */
-function saveFighterRightInLocalStorate(src, name){
+function saveFighterRightInLocalStorate(src, name) {
     localStorage.setItem('fighter-right-src', src);
     localStorage.setItem('fighter-right-name', name);
+}
+
+/**
+ * Save last input values of the pannels.
+ */
+function saveLastInputValues() {
+    const saveLifeFigtherLeft = document.getElementById('id-life-figther-left').value;
+    const saveDamageFigtherLeft = document.getElementById('id-damage-figther-left').value;
+    const saveDefenseFigtherLeft = document.getElementById('id-defense-figther-left').value;
+    localStorage.setItem('life-figther-left', saveLifeFigtherLeft);
+    localStorage.setItem('damage-figther-left', saveDamageFigtherLeft);
+    localStorage.setItem('defense-figther-left', saveDefenseFigtherLeft);
+
+    const saveLifeFigtherRight = document.getElementById('id-life-figther-right').value;
+    const saveDamageFigtherRight = document.getElementById('id-damage-figther-right').value;
+    const saveDefenseFigtherRight = document.getElementById('id-defense-figther-right').value;
+    localStorage.setItem('life-figther-right', saveLifeFigtherRight);
+    localStorage.setItem('damage-figther-right', saveDamageFigtherRight);
+    localStorage.setItem('defense-figther-right', saveDefenseFigtherRight);
 }
